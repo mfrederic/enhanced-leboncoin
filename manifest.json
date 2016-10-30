@@ -1,0 +1,27 @@
+{
+  "manifest_version": 2,
+  "name": "Enhanced Leboncoin",
+  "version": "0.1",
+  "description": "Rendez le service Leboncoin plus pratique en y ajoutant quelques fonctionnalités utiles.",
+  "icons": {
+    "48": "icons/enhanced-48.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.leboncoin.fr/*"],
+      "js": ["lib/jquery.min.js","lib/lodash.min.js",
+        "models/annonce.js",
+        "enhanced-popup.js",
+        "enhanced.js"]
+    }
+  ],
+
+  "applications": {
+    "gecko": {
+      "id": "enhanced.leboncoin@example.com",
+      "strict_min_version": "42.0",
+      "strict_max_version": "50.*",
+      "update_url": "https://github.com/example"
+    }
+  }
+}
