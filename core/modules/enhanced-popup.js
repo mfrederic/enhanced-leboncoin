@@ -1,22 +1,13 @@
 function EnhancedPopup() {
   'use strict';
 
-  var EnhancedPopup = this;
-  this.toClassSelector = function(cssClass) {
-    return '.' + cssClass;
-  };
-  this.C = {
-    ENHANCED_POPUP_CLASS: 'enhanced-popup',
-    ENHANCED_POPUP_CLOSE_CLASS: 'enhanced-popup-close',
-    ENHANCED_POPUP_CLOSE_TEXT: 'Fermer',
-    ENHANCED_POPUP_CONTENT_CLASS: 'enhanced-popup-content',
-  };
+  var context = this;
 
   this.buildPopup = function() {
     var $div = $('<div />');
 
     var $container = $div.clone();
-    $container.addClass(this.C.ENHANCED_POPUP_CLASS);
+    $container.addClass(constants.get('ENHANCED_POPUP_CLASS'));
     $container.css({
       display: 'none',
       overflow: 'auto',
@@ -28,8 +19,8 @@ function EnhancedPopup() {
     });
 
     var $close = $('<button />');
-    $close.addClass(this.C.ENHANCED_POPUP_CLOSE_CLASS)
-      .text(this.C.ENHANCED_POPUP_CLOSE_TEXT);
+    $close.addClass(constants.get('ENHANCED_POPUP_CLOSE_CLASS'))
+      .text(constants.get('ENHANCED_POPUP_CLOSE_TEXT'));
     $close.css({
       display: 'block',
       width: '100%',
@@ -43,7 +34,7 @@ function EnhancedPopup() {
     });
 
     var $content = $div.clone();
-    $content.addClass(this.C.ENHANCED_POPUP_CONTENT_CLASS);
+    $content.addClass(constants.get('ENHANCED_POPUP_CONTENT_CLASS'));
     $content.css({
       color: '#222'
     });
@@ -51,38 +42,38 @@ function EnhancedPopup() {
     $container.append($close).append($content);
     $('body').append($container);
 
-    $(this.toClassSelector(this.C.ENHANCED_POPUP_CLOSE_CLASS)).on('click', function(e) {
-      $(EnhancedPopup.toClassSelector(EnhancedPopup.C.ENHANCED_POPUP_CLASS)).hide();
+    $(cssHelper.toClassSelector(constants.get('ENHANCED_POPUP_CLOSE_CLASS'))).on('click', function(e) {
+      $(cssHelper.toClassSelector(constants.get('ENHANCED_POPUP_CLASS'))).hide();
       e.preventDefault();
     });
   };
 
   this.setHTMLContent = function(content) {
-    $(this.toClassSelector(this.C.ENHANCED_POPUP_CONTENT_CLASS)).html(content);
+    $(cssHelper.toClassSelector(constants.get('ENHANCED_POPUP_CONTENT_CLASS'))).html(content);
   };
 
   this.setDomElementContent = function(DOMElement) {
-    $(this.toClassSelector(this.C.ENHANCED_POPUP_CONTENT_CLASS)).empty().append(DOMElement);
+    $(cssHelper.toClassSelector(constants.get('ENHANCED_POPUP_CONTENT_CLASS'))).empty().append(DOMElement);
   }
 
   this.showPopup = function(DOMElement) {
     var documentWidth = $(document).width();
     var supposedXPosition = DOMElement.offset().left + DOMElement.outerWidth();
     if(documentWidth - supposedXPosition >= 400)
-      $(EnhancedPopup.toClassSelector(this.C.ENHANCED_POPUP_CLASS)).css({
+      $(cssHelper.toClassSelector(constants.get('ENHANCED_POPUP_CLASS'))).css({
         left: supposedXPosition,
         right: 'auto'
       });
     else {
-      $(EnhancedPopup.toClassSelector(this.C.ENHANCED_POPUP_CLASS)).css({
+      $(cssHelper.toClassSelector(constants.get('ENHANCED_POPUP_CLASS'))).css({
         left: 'auto',
         right: documentWidth - DOMElement.offset().left
       });
     }
 
-    $(EnhancedPopup.toClassSelector(this.C.ENHANCED_POPUP_CLASS)).css('top', DOMElement.offset().top).show();
+    $(cssHelper.toClassSelector(constants.get('ENHANCED_POPUP_CLASS'))).css('top', DOMElement.offset().top).show();
   }
 
-  if($(EnhancedPopup.toClassSelector(this.C.ENHANCED_POPUP_CLASS)).length === 0)
+  if($(cssHelper.toClassSelector(constants.get('ENHANCED_POPUP_CLASS'))).length === 0)
     this.buildPopup();
 };

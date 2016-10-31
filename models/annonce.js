@@ -1,6 +1,10 @@
 function Annonce(DOMElement) {
   'use strict';
 
+  if(_.isEmpty(DOMElement)) {
+    return false;
+  }
+
   var Annonce = this;
   this.element = $(DOMElement);
   this.url = this.element.attr('href');
@@ -75,11 +79,15 @@ function Annonce(DOMElement) {
 };
 
 Annonce.prototype.addShowButton = function () {
-  'use strict';
-  
-  var $buttonContainer = $('<div />');
-  $buttonContainer.addClass('show-more-enhanced');
-  var $showButton = $('<button>Voir plus</button>');
-  $buttonContainer.append($showButton);
-  $('.saveAd').append($buttonContainer);
+  var $showButton = $('<button>Enhanced Leboncoin</button>');
+  $showButton.addClass('show-more-enhanced button-white').css({
+    position: 'absolute',
+    right: 5,
+    bottom: 5,
+    width: 150,
+    padding: 0,
+    height: 20,
+    lineHeight: '20px'
+  });
+  $(cssHelper.toClassSelector(constants.get('LEBONCOIN_ANNONCE_ITEMS_CLASS'))).append($showButton);
 };
