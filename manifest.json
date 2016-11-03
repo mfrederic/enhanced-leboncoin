@@ -2,20 +2,27 @@
   "manifest_version": 2,
   "name": "Enhanced Leboncoin",
   "version": "0.1.1",
+
   "description": "Rendez le service Leboncoin plus pratique en y ajoutant quelques fonctionnalités utiles.",
+  "homepage_url": "https://github.com/mfrederic/enhanced-leboncoin",
   "icons": {
     "48": "icons/enhanced-48.png"
   },
+
+  "permissions": [
+    "storage"
+  ],
+
   "content_scripts": [
     {
       "matches": ["*://*.leboncoin.fr/*"],
-      "js": ["lib/jquery.min.js","lib/lodash.min.js",
-        "core/constants.js",
-        "core/modules/enhanced-popup.js",
-        "core/modules/enhanced.js",
-        "core/helpers/cssHelper.js",
-        "models/annonce.js",
-        "core/main.js"]
+      "js": [
+        "app/lib/jquery.min.js","app/lib/lodash.min.js","app/lib/moment.min.js",
+        "app/constants.js",
+        "app/modules/saved-annonces.js","app/modules/enhanced-popup.js","app/modules/enhanced.js",
+        "app/helpers/cssHelper.js","app/helpers/htmlHelper.js","app/helpers/dateHelper.js",
+        "app/models/storage.js","app/models/annonce.js",
+        "app/main.js"]
     }
   ]
 }
