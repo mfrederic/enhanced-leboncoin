@@ -1,9 +1,9 @@
 {
   "manifest_version": 2,
   "name": "Enhanced Leboncoin",
-  "version": "0.1.1",
+  "version": "0.1.2",
 
-  "description": "Rendez le service Leboncoin plus pratique en y ajoutant quelques fonctionnalités utiles.",
+  "description": "Rendez le service Leboncoin plus pratique en y ajoutant quelques fonctionnalités utiles. Cette extension est en phase de développement. Il s'agit d'une version Alpha ne possédant pas toutes les caractéristiques finales.",
   "homepage_url": "https://github.com/mfrederic/enhanced-leboncoin",
   "icons": {
     "48": "icons/enhanced-48.png"
